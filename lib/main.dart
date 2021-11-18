@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  //runApp(const MyApp());
+  runApp(App());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,15 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: MyFirstWidgetSF() //const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -31,10 +23,14 @@ class MyApp extends StatelessWidget {
 
 // Первый виджет
 class MyFirstWidget extends StatelessWidget {
+  
   MyFirstWidget({ Key? key }) : super(key: key);
 
   int counter = 0;
 
+  // Вызовет ошибку т.к. нет контекста
+  //Type getContextRuntimeType() => context.runtimeType;
+  
   @override
   Widget build(BuildContext context) {
 
@@ -53,22 +49,30 @@ class MyFirstWidget extends StatelessWidget {
 
 // Второй виджет 
 class MyFirstWidgetSF extends StatefulWidget {
+  
   MyFirstWidgetSF({ Key? key }) : super(key: key); 
 
   @override
   _MyFirstWidgetState createState() => _MyFirstWidgetState();
+  
 }
 
 class _MyFirstWidgetState extends State<MyFirstWidgetSF> {
   
   int counter = 0;
   
+  Type getContextRuntimeType() => context.runtimeType;
+
   @override
   Widget build(BuildContext context) {
     
     counter++;
-
+    
     print('Функция build отработала ${counter} раз');
+    
+    Type cntx = getContextRuntimeType();
+
+    print('Context.runtimeType = ${cntx}');
 
     return Container(
       child: Center(
@@ -79,17 +83,29 @@ class _MyFirstWidgetState extends State<MyFirstWidgetSF> {
 }
 
 
+//Приложение 
+class App extends StatelessWidget {
+  
+  App({Key? key}) : super(key: key);
+  
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+
+    //final myWidget = MyFirstWidget();
+    final myWidget = MyFirstWidgetSF();
+
+    return MaterialApp(
+      title: 'MyFirstWidget Title',
+      home: myWidget
+    );
+  }
+}
+
+
 class MyHomePage extends StatefulWidget {
+  
   const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
 
@@ -98,6 +114,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  
   int _counter = 0;
 
   void _incrementCounter() {
