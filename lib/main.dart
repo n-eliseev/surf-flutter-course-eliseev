@@ -24,10 +24,60 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyFirstWidgetSF() //const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
+
+// Первый виджет
+class MyFirstWidget extends StatelessWidget {
+  MyFirstWidget({ Key? key }) : super(key: key);
+
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+
+    counter++;
+
+    print('Функция build отработала ${counter} раз');
+
+    return Container(
+      child: const Center(
+        child: Text('Hello!')
+      )
+    );
+  }
+}
+
+
+// Второй виджет 
+class MyFirstWidgetSF extends StatefulWidget {
+  MyFirstWidgetSF({ Key? key }) : super(key: key); 
+
+  @override
+  _MyFirstWidgetState createState() => _MyFirstWidgetState();
+}
+
+class _MyFirstWidgetState extends State<MyFirstWidgetSF> {
+  
+  int counter = 0;
+  
+  @override
+  Widget build(BuildContext context) {
+    
+    counter++;
+
+    print('Функция build отработала ${counter} раз');
+
+    return Container(
+      child: Center(
+        child: Text('Hello!')
+      )
+    );
+  }
+}
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
