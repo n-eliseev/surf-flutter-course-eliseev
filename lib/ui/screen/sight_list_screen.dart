@@ -14,15 +14,23 @@ class _SightListScreenState extends State<SightListScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 72,
-        title: const Text(
-          'Список\nинтересных мест',
-          style: const TextStyle(
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w700,
-            fontSize: 32,
-            color: const Color(0xFF252849),
-            height: 1.125
-          ),
+        title: RichText(
+          text:
+            const TextSpan(
+              style: const TextStyle(
+                fontFamily: 'Roboto',
+                fontWeight: FontWeight.w700,
+                fontSize: 32,
+                color: const Color(0xFF252849),
+                height: 1.125
+              ),
+              children: const <TextSpan>[
+                const TextSpan(text: 'С', style: const TextStyle(color: const Color(0xFF4CAF50))),
+                const TextSpan(text: 'писок\n' ),
+                const TextSpan(text: 'и', style: const TextStyle(color: const Color(0xFFFCDD3D))),
+                const TextSpan(text: 'нтересных мест' ),
+              ] 
+            )
         ),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         elevation: 0,
