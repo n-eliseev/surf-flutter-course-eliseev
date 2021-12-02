@@ -5,7 +5,7 @@ class Sight {
   final double lon;
   final String url;
   final String details;
-  final int type;
+  final String type;
 
   const Sight({
     required this.name,
