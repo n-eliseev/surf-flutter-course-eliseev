@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
-import '../../domain/sight.dart';
+import 'package:places/domain/sight.dart';
+import 'package:places/domain/app_const.dart';
 
 class SightDetails extends StatelessWidget {
 
@@ -12,12 +13,12 @@ class SightDetails extends StatelessWidget {
     Sight sight = mocks[0];
 
     final width = MediaQuery.of(context).size.width;
-    const double _p1 = 16;
-    const double _p2 = 24;
+    const double _p16 = AppUi.p16;
+    const double _p24 = AppUi.p24;
     const textColor = const Color(0xFF3B3E5B);
     const h1Style = const TextStyle(color: textColor, fontSize: 24, height: 1.2);
     const textStyle = const TextStyle(color: textColor, fontSize: 14, height: 1.1);
-    const blockPadding = EdgeInsets.fromLTRB(_p1, _p2, _p1, 0);
+    const blockPadding = EdgeInsets.fromLTRB(_p16, _p24, _p16, 0);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -35,8 +36,8 @@ class SightDetails extends StatelessWidget {
                 height: 360,
               ),
               Positioned(
-                left: _p1,
-                top: _p1*2,
+                left: _p16,
+                top: _p16*2,
                 child: Container(color: Colors.white, width: 32, height: 32)
               )
             ],
@@ -71,7 +72,7 @@ class SightDetails extends StatelessWidget {
               height: 48, 
               width: width,
               decoration: const BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
+                borderRadius: const BorderRadius.all(Radius.circular(AppUi.p12)),
                 color: Colors.green
               ),
             ),
@@ -87,8 +88,8 @@ class SightDetails extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(color: Colors.grey, width: width / 2 - _p1*2, height: 40),
-                Container(color: Colors.blue, width: width / 2 - _p1*2, height: 40)
+                Container(color: Colors.grey, width: width / 2 - _p16*2, height: 40),
+                Container(color: Colors.blue, width: width / 2 - _p16*2, height: 40)
               ]
             ),
           )

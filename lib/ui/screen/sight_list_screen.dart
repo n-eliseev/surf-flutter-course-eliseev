@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:places/domain/sight.dart';
-import './sight_card.dart';
-import '../../mocks.dart';
+import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/mocks.dart';
+import 'package:places/domain/app_const.dart';
 
 class SightListScreen extends StatefulWidget {
   const SightListScreen({ Key? key }) : super(key: key);
@@ -31,7 +31,7 @@ class _SightListScreenState extends State<SightListScreen> {
       appBar: AppBar(
         toolbarHeight: 72,
         title: const Text(
-          'Список\nинтересных мест',
+          AppStrings.appBarTitle,
           style: const TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w700,
