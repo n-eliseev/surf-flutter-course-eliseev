@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/domain/app_const.dart';
+import 'package:places/domain/app_strings.dart';
+import 'package:places/domain/app_ui.dart';
+
 
 class SightDetails extends StatelessWidget {
 
