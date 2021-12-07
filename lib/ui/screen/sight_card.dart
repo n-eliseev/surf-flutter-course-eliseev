@@ -28,8 +28,32 @@ class SightCard extends StatelessWidget {
                   topLeft: const Radius.circular(AppUi.p16),
                   topRight: const Radius.circular(AppUi.p16)
                 ),
-                color: Colors.lightBlue
-              )
+                //color: Colors.lightBlue
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(AppUi.p16),
+                  topRight: const Radius.circular(AppUi.p16)
+                ),
+                child: Image.network(
+                  sight.image,
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    
+                    if (loadingProgress == null) return child;
+
+                    return Center(
+                      child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null ?
+                                    loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                      :
+                                  null,
+                      ),
+                    );
+                  },
+                ),
+              ),
             ),
 
             Positioned(

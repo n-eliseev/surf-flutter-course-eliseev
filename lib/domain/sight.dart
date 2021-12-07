@@ -6,6 +6,7 @@ class Sight {
   final String url;
   final String details;
   final String type;
+  final String image;
 
   const Sight({
     required this.name,
@@ -13,6 +14,7 @@ class Sight {
     required this.details,
     required this.lat,
     required this.lon,
-    required this.url
+    required this.url,
+    required this.image
   });
 }

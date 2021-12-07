@@ -32,11 +32,30 @@ class SightDetails extends StatelessWidget {
 
           Stack(
             children: [
+              
               Container(
-                color: Colors.blue,
                 width: width,
                 height: 360,
+                child: Image.network(
+                  sight.image,
+                  fit: BoxFit.cover,
+                  alignment: Alignment.topCenter,
+                  loadingBuilder: (context, child, loadingProgress) {
+                    
+                    if (loadingProgress == null) return child;
+
+                    return Center(
+                      child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null ?
+                                    loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                      :
+                                  null,
+                      ),
+                    );
+                  },
+                ),
               ),
+              
               Positioned(
                 left: _p16,
                 top: _p16*2,
