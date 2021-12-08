@@ -5,12 +5,10 @@ import 'package:places/domain/app_strings.dart';
 import 'package:places/domain/app_ui.dart';
 
 
-/** 
- * Класс описывает виджет 
- * Виджет экрана со списком интересных мест
- * Конструктор, на входе получает список мест sight List<Sight> 
- * В теле виджета строится лента (Column) из виджетов SightCard
-*/
+/// Класс описывает виджет 
+/// Виджет экрана со списком интересных мест
+/// Конструктор, на входе получает список мест sight List<Sight> 
+/// В теле виджета строится лента (Column) из виджетов SightCard
 class SightListScreen extends StatefulWidget {
 
   final List<Sight> sight;

@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/domain/app_ui.dart';
 
-/**
- * Класс описывает виджет экрана
- * показывающего конкретную карточку места
- * конструктор на входе получает объект типа Sight
- */
+
+/// Класс описывает виджет экрана
+/// показывающего конкретную карточку места
+/// конструктор на входе получает объект типа Sight
 class SightDetails extends StatelessWidget {
 
   final Sight sight;
