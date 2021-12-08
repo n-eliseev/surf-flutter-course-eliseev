@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/domain/app_strings.dart';
 import 'package:places/domain/app_ui.dart';
 
 
+/**
+ * Класс описывает виджет карточку (превью) интересного места
+ * На входе получает объект класса Sight
+ */
 class SightCard extends StatelessWidget {
 
   final Sight sight; 

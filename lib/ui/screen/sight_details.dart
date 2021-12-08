@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:places/mocks.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/domain/app_strings.dart';
 import 'package:places/domain/app_ui.dart';
 
-
+/**
+ * Класс описывает виджет экрана
+ * показывающего конкретную карточку места
+ * конструктор на входе получает объект типа Sight
+ */
 class SightDetails extends StatelessWidget {
 
-  const SightDetails({ Key? key }) : super(key: key);
+  final Sight sight;
+
+  const SightDetails(this.sight, { Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     
-    Sight sight = mocks[0];
+    //Sight sight = mocks[0];
 
     final width = MediaQuery.of(context).size.width;
     const double _p16 = AppUi.p16;
