@@ -26,15 +26,15 @@ class SightCard extends StatelessWidget {
               height: 96,
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(AppUi.p16),
-                  topRight: const Radius.circular(AppUi.p16)
+                  topLeft: Radius.circular(AppUi.p16),
+                  topRight: Radius.circular(AppUi.p16)
                 ),
                 //color: Colors.lightBlue
               ),
               child: ClipRRect(
-                borderRadius: BorderRadius.only(
-                  topLeft: const Radius.circular(AppUi.p16),
-                  topRight: const Radius.circular(AppUi.p16)
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(AppUi.p16),
+                  topRight: Radius.circular(AppUi.p16)
                 ),
                 child: Image.network(
                   sight.image,
@@ -76,25 +76,25 @@ class SightCard extends StatelessWidget {
           height: 92,
           //constraints: BoxConstraints(minWidth: width), 
           decoration: const BoxDecoration(
-            borderRadius: const BorderRadius.only(
-              bottomLeft: const Radius.circular(AppUi.p12), 
-              bottomRight: const Radius.circular(AppUi.p12) 
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(AppUi.p12), 
+              bottomRight: Radius.circular(AppUi.p12) 
             ),
-            color: const Color(0xFFF5F5F5),
+            color: Color(0xFFF5F5F5),
           ),
           child: Padding(
-            padding: EdgeInsets.all(AppUi.p16),
+            padding: const EdgeInsets.all(AppUi.p16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
                   sight.name,
-                  style:const TextStyle( fontFamily: 'Roboto', color: const Color(0xFF3B3E5B), fontSize: 16, height: 1.07 )
+                  style: const TextStyle( fontFamily: 'Roboto', color: Color(0xFF3B3E5B), fontSize: 16, height: 1.07 )
                 ),
                 Text(
                   sight.details,
-                  style:const TextStyle( fontFamily: 'Roboto', color: const Color(0xFF7C7E92), fontSize: 14, height: 1.1 )
+                  style: const TextStyle( fontFamily: 'Roboto', color: Color(0xFF7C7E92), fontSize: 14, height: 1.1 )
                 ),
               ],
             )

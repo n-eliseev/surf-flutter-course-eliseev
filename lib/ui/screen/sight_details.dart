@@ -20,9 +20,9 @@ class SightDetails extends StatelessWidget {
     final width = MediaQuery.of(context).size.width;
     const double _p16 = AppUi.p16;
     const double _p24 = AppUi.p24;
-    const textColor = const Color(0xFF3B3E5B);
-    const h1Style = const TextStyle(color: textColor, fontSize: 24, height: 1.2);
-    const textStyle = const TextStyle(color: textColor, fontSize: 14, height: 1.1);
+    const textColor = Color(0xFF3B3E5B);
+    const h1Style = TextStyle(color: textColor, fontSize: 24, height: 1.2);
+    const textStyle = TextStyle(color: textColor, fontSize: 14, height: 1.1);
     const blockPadding = EdgeInsets.fromLTRB(_p16, _p24, _p16, 0);
 
     return Scaffold(
@@ -36,7 +36,7 @@ class SightDetails extends StatelessWidget {
           Stack(
             children: [
               
-              Container(
+              SizedBox(
                 width: width,
                 height: 360,
                 child: Image.network(
@@ -96,15 +96,15 @@ class SightDetails extends StatelessWidget {
               height: 48, 
               width: width,
               decoration: const BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(AppUi.p12)),
+                borderRadius: BorderRadius.all(Radius.circular(AppUi.p12)),
                 color: Colors.green
               ),
             ),
           ),
 
-          Padding(
+          const Padding(
             padding: blockPadding,
-            child: const Divider(thickness: 0.8, color: Color.fromRGBO(124, 126, 146, 0.56))
+            child: Divider(thickness: 0.8, color: Color.fromRGBO(124, 126, 146, 0.56))
           ),
 
           Padding(

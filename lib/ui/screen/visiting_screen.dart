@@ -26,31 +26,31 @@ class VisitingScreen extends StatelessWidget {
           toolbarHeight: 56,
           
           title: const Center(
-            child: const Text(
+            child: Text(
               AppStrings.favorite,
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Roboto',
                 fontSize: 18,
-                color: const Color(0xFF252849),
+                color: Color(0xFF252849),
                 height: 1.14
               ),
             )
           ),
           
           bottom: PreferredSize(
-            preferredSize: Size.fromHeight(52),
+            preferredSize: const Size.fromHeight(52),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
                 color: const Color(0xFFF5F5F5),
               ),
-              margin: EdgeInsets.symmetric(
+              margin: const EdgeInsets.symmetric(
                 vertical: 6,
                 horizontal: 16,
               ),
               child: TabBar(
-                tabs: [
+                tabs: const [
                   Tab( text: 'Хочу посетить'),
                   Tab( text: 'Посетил' ),
                 ],
@@ -58,7 +58,7 @@ class VisitingScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                   color: const Color(0xFF3B3E5B),
                 ),
-                labelStyle: TextStyle(
+                labelStyle: const TextStyle(
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                   height: 1.1
@@ -76,7 +76,7 @@ class VisitingScreen extends StatelessWidget {
           ]
         ),
 
-        bottomNavigationBar: BottomNavBar(),
+        bottomNavigationBar: const BottomNavBar(),
       ),
     );
   }
@@ -95,7 +95,7 @@ class _SightListTab extends StatelessWidget {
   final String emptyTitle;
   final List<Sight> sight;
   
-  _SightListTab({ 
+  const _SightListTab({ 
     required this.icon, 
     required this.emptyTitle,
     this.sight = const <Sight>[],  
@@ -106,17 +106,17 @@ class _SightListTab extends StatelessWidget {
   Widget build(BuildContext context) {
 
     const emptyColor = Color.fromRGBO(124, 126, 146, 0.56);
-    const emptyStyle = const TextStyle(fontFamily: 'Roboto', color: emptyColor);
+    const emptyStyle = TextStyle(fontFamily: 'Roboto', color: emptyColor);
 
-    return sight.length == 0 ? 
+    return sight.isEmpty ? 
       Column(
         mainAxisAlignment: MainAxisAlignment.center , 
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Icon(icon, size: 64, color: emptyColor),
-          SizedBox(height: 32),
+          const SizedBox(height: 32),
           Text('Пусто', textAlign: TextAlign.center, style: emptyStyle.copyWith(fontSize: 18, height: 1.14)),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(emptyTitle, textAlign: TextAlign.center, style: emptyStyle.copyWith(fontSize: 14, height: 1.1)),
         ],
       ) :
@@ -124,10 +124,10 @@ class _SightListTab extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start, 
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          for(int i=0; i<this.sight.length; i++)
+          for(int i=0; i<sight.length; i++)
             Padding(
-              padding: EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
-              child: SightCard(this.sight[i])
+              padding: const EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
+              child: SightCard(sight[i])
             )
         ]
       )

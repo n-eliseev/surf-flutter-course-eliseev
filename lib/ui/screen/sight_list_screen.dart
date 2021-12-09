@@ -16,14 +16,10 @@ class SightListScreen extends StatefulWidget {
   const SightListScreen(this.sight, { Key? key }) : super(key: key);
 
   @override
-  _SightListScreenState createState() => _SightListScreenState(sight);
+  _SightListScreenState createState() => _SightListScreenState();
 }
 
 class _SightListScreenState extends State<SightListScreen> {
-  
-  final List<Sight> sight;
-
-  _SightListScreenState(this.sight);
 
   @override
   Widget build(BuildContext context) {
@@ -34,23 +30,23 @@ class _SightListScreenState extends State<SightListScreen> {
         toolbarHeight: 72,
         title: const Text(
           AppStrings.appBarTitle,
-          style: const TextStyle(
+          style: TextStyle(
             fontFamily: 'Roboto',
             fontWeight: FontWeight.w700,
             fontSize: 32,
-            color: const Color(0xFF252849),
+            color: Color(0xFF252849),
             height: 1.125
           ),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Column(
         children: [
-          for(int i=0; i<this.sight.length; i++)
+          for(int i=0; i<widget.sight.length; i++)
             Padding(
-              padding: EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
-              child: SightCard(this.sight[i])
+              padding: const EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
+              child: SightCard(widget.sight[i])
             )
         ]
       )
