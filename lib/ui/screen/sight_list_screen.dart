@@ -1,49 +1,54 @@
 import 'package:flutter/material.dart';
+import 'package:places/domain/sight.dart';
+import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/domain/app_strings.dart';
+import 'package:places/domain/app_ui.dart';
 
+
+/// Класс описывает виджет 
+/// Виджет экрана со списком интересных мест
+/// Конструктор, на входе получает список мест sight List<Sight> 
+/// В теле виджета строится лента (Column) из виджетов SightCard
 class SightListScreen extends StatefulWidget {
-  const SightListScreen({ Key? key }) : super(key: key);
+
+  final List<Sight> sight;
+
+  const SightListScreen(this.sight, { Key? key }) : super(key: key);
 
   @override
   _SightListScreenState createState() => _SightListScreenState();
 }
 
 class _SightListScreenState extends State<SightListScreen> {
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 72,
-        title: RichText(
-          text:
-            const TextSpan(
-              style: const TextStyle(
-                fontFamily: 'Roboto',
-                fontWeight: FontWeight.w700,
-                fontSize: 32,
-                color: const Color(0xFF252849),
-                height: 1.125
-              ),
-              children: const <TextSpan>[
-                const TextSpan(text: 'С', style: const TextStyle(color: const Color(0xFF4CAF50))),
-                const TextSpan(text: 'писок\n' ),
-                const TextSpan(text: 'и', style: const TextStyle(color: const Color(0xFFFCDD3D))),
-                const TextSpan(text: 'нтересных мест' ),
-              ] 
-            )
+        title: const Text(
+          AppStrings.appBarTitle,
+          style: TextStyle(
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.w700,
+            fontSize: 32,
+            color: Color(0xFF252849),
+            height: 1.125
+          ),
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Center(
-        child: TextFormField(
-          maxLength: 5,
-          decoration: const InputDecoration(
-            labelText: 'Input you`r text',
-            hintText: 'Hint text',
-            border: OutlineInputBorder()
-          ),
-        ), //const Text('Hello'),
+      body: Column(
+        children: [
+          for(int i=0; i<widget.sight.length; i++)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
+              child: SightCard(widget.sight[i])
+            )
+        ]
       )
     );
   }
