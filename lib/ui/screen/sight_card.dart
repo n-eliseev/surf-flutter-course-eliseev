@@ -15,92 +15,85 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return Column(
-      children: [
+    return Card(
+      //child: ,
+      
+      child: Column(
+        children: [
 
-        Stack(
-          children:[
-            
-            Container(
-              width: double.infinity,
-              height: 96,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(AppUi.p16),
-                  topRight: Radius.circular(AppUi.p16)
-                ),
-                //color: Colors.lightBlue
+          Stack(
+            children:[
+              
+              SizedBox(
+                width: double.infinity,
+                height: 96,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(AppUi.p16),
+                    topRight: Radius.circular(AppUi.p16)
+                  ),
+
+                  child: Image.network(
+                    sight.image,
+                    fit: BoxFit.fitWidth,
+                    alignment: Alignment.topCenter,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      
+                      if (loadingProgress == null) return child;
+
+                      return Center(
+                        child: CircularProgressIndicator(
+                            value: loadingProgress.expectedTotalBytes != null ?
+                                      loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
+                                        :
+                                    null,
+                        ),
+                      );
+                    },
+                  ),
+                )
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(AppUi.p16),
-                  topRight: Radius.circular(AppUi.p16)
-                ),
-                child: Image.network(
-                  sight.image,
-                  fit: BoxFit.fitWidth,
-                  alignment: Alignment.topCenter,
-                  loadingBuilder: (context, child, loadingProgress) {
-                    
-                    if (loadingProgress == null) return child;
 
-                    return Center(
-                      child: CircularProgressIndicator(
-                          value: loadingProgress.expectedTotalBytes != null ?
-                                    loadingProgress.cumulativeBytesLoaded / loadingProgress.expectedTotalBytes!
-                                      :
-                                  null,
-                      ),
-                    );
-                  },
-                ),
+              Positioned(
+                top: AppUi.p16,
+                left: AppUi.p16,
+                child: Text(
+                  sight.type.toLowerCase(), 
+                  style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white)
+                )
               ),
-            ),
 
-            Positioned(
-              top: AppUi.p16,
-              left: AppUi.p16,
-              child: Text(sight.type.toLowerCase(), style: const TextStyle(color: Colors.white, height: 1.1, fontSize: 14))
-            ),
-
-            Positioned(
-              top: AppUi.p16,
-              right: AppUi.p16,
-              child: Container(color: Colors.white, width: 20, height: 18)
-            ),
-          ]
-        ),
-
-        Container(
-          width: double.infinity,
-          height: 92,
-          //constraints: BoxConstraints(minWidth: width), 
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(AppUi.p12), 
-              bottomRight: Radius.circular(AppUi.p12) 
-            ),
-            color: Color(0xFFF5F5F5),
+              Positioned(
+                top: AppUi.p16,
+                right: AppUi.p16,
+                child: Container(color: Colors.white, width: 20, height: 18)
+              ),
+            ]
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(AppUi.p16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  sight.name,
-                  style: const TextStyle( fontFamily: 'Roboto', color: Color(0xFF3B3E5B), fontSize: 16, height: 1.07 )
-                ),
-                Text(
-                  sight.details,
-                  style: const TextStyle( fontFamily: 'Roboto', color: Color(0xFF7C7E92), fontSize: 14, height: 1.1 )
-                ),
-              ],
+
+          SizedBox(
+            width: double.infinity,
+            height: 92,
+            child: Padding(
+              padding: const EdgeInsets.all(AppUi.p16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text(
+                    sight.name,
+                    style: Theme.of(context).textTheme.headline3
+                  ),
+                  Text(
+                    sight.details,
+                    style: Theme.of(context).textTheme.bodyText2
+                  ),
+                ],
+              )
             )
           )
-        )
-      ]
+        ]
+      )
     );
   }
 }

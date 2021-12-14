@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/sight_card.dart';
+import 'package:places/ui/screen/res/themes.dart';
 import 'package:places/domain/app_strings.dart';
 import 'package:places/domain/app_ui.dart';
 
@@ -28,14 +29,10 @@ class _SightListScreenState extends State<SightListScreen> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: 72,
-        title: const Text(
+        title: Text(
           AppStrings.appBarTitle,
-          style: TextStyle(
-            fontFamily: 'Roboto',
-            fontWeight: FontWeight.w700,
-            fontSize: 32,
-            color: Color(0xFF252849),
-            height: 1.125
+          style: AppTheme.headerText.copyWith(
+            color: Theme.of(context).textTheme.headline1!.color
           ),
         ),
         backgroundColor: Colors.transparent,

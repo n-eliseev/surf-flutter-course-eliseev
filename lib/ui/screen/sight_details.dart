@@ -14,15 +14,10 @@ class SightDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
-    //Sight sight = mocks[0];
 
     final width = MediaQuery.of(context).size.width;
     const double _p16 = AppUi.p16;
     const double _p24 = AppUi.p24;
-    const textColor = Color(0xFF3B3E5B);
-    const h1Style = TextStyle(color: textColor, fontSize: 24, height: 1.2);
-    const textStyle = TextStyle(color: textColor, fontSize: 14, height: 1.1);
     const blockPadding = EdgeInsets.fromLTRB(_p16, _p24, _p16, 0);
 
     return Scaffold(
@@ -72,14 +67,10 @@ class SightDetails extends StatelessWidget {
             child: RichText(
               textAlign: TextAlign.left,
               text: TextSpan(
-                style: const TextStyle(
-                  fontFamily: 'Roboto',
-                  fontWeight: FontWeight.bold
-                ),
                 children: [
-                  TextSpan(text: sight.name, style: h1Style),
+                  TextSpan(text: sight.name, style: Theme.of(context).textTheme.headline1),
                   const TextSpan(text: '\n'),
-                  TextSpan(text: sight.type, style: textStyle),
+                  TextSpan(text: sight.type, style: Theme.of(context).textTheme.bodyText1),
                 ]
               )
             ),
@@ -87,7 +78,7 @@ class SightDetails extends StatelessWidget {
 
           Padding(
             padding: blockPadding,
-            child: Text(sight.details, style: textStyle),
+            child: Text(sight.details, style: Theme.of(context).textTheme.bodyText1),
           ),
 
           Padding(

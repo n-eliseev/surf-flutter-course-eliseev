@@ -4,6 +4,7 @@ import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/sight_details.dart';
 import 'package:places/domain/app_strings.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
+import 'package:places/ui/screen/res/themes.dart';
 
 void main() {
   runApp(const App());
@@ -23,6 +24,7 @@ class App extends StatelessWidget {
     return MaterialApp(
       title: AppStrings.appTitle, //'Places',
       home: screen,
+      theme: AppTheme.dark//AppTheme.light,
     );
   }
 }
