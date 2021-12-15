@@ -5,6 +5,7 @@ import 'package:places/domain/app_ui.dart';
 import 'package:places/domain/app_strings.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/bottom_nav_bar.dart';
+import 'package:places/ui/screen/res/themes.dart';
 
 // Класс описывает виджет экрана с местами, которые пользователь 
 // желает посетить и уже посетил
@@ -25,16 +26,11 @@ class VisitingScreen extends StatelessWidget {
           elevation: 0,
           toolbarHeight: 56,
           
-          title: const Center(
+          title: Center(
             child: Text(
               AppStrings.favorite,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: 'Roboto',
-                fontSize: 18,
-                color: Color(0xFF252849),
-                height: 1.14
-              ),
+              style: Theme.of(context).textTheme.headline2,
             )
           ),
           
@@ -43,27 +39,17 @@ class VisitingScreen extends StatelessWidget {
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(40),
-                color: const Color(0xFFF5F5F5),
+                color: Theme.of(context).cardTheme.color,
               ),
               margin: const EdgeInsets.symmetric(
                 vertical: 6,
                 horizontal: 16,
               ),
-              child: TabBar(
-                tabs: const [
+              child: const TabBar(
+                tabs: [
                   Tab( text: 'Хочу посетить'),
                   Tab( text: 'Посетил' ),
                 ],
-                indicator: BoxDecoration(
-                  borderRadius: BorderRadius.circular(40),
-                  color: const Color(0xFF3B3E5B),
-                ),
-                labelStyle: const TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: 14,
-                  height: 1.1
-                ),
-                unselectedLabelColor: const Color.fromRGBO(124, 126, 146, 0.56),
               ),
             ),
           ),
@@ -71,7 +57,8 @@ class VisitingScreen extends StatelessWidget {
 
         body: TabBarView(
           children: [
-            _SightListTab(sight: mocks.sublist(2), icon: Icons.my_location, emptyTitle: 'Отмечайте понравившиеся\nместа и они появиятся здесь.',),            
+            //_SightListTab(sight: mocks.sublist(2), icon: Icons.my_location, emptyTitle: 'Отмечайте понравившиеся\nместа и они появиятся здесь.',),            
+            const _SightListTab(icon: Icons.my_location, emptyTitle: 'Отмечайте понравившиеся\nместа и они появиятся здесь.',),            
             _SightListTab(sight: mocks.sublist(0,1),icon: Icons.checklist, emptyTitle: 'Завершите маршрут,\nчтобы место попало сюда.'),            
           ]
         ),
@@ -105,19 +92,24 @@ class _SightListTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    const emptyColor = Color.fromRGBO(124, 126, 146, 0.56);
-    const emptyStyle = TextStyle(fontFamily: 'Roboto', color: emptyColor);
-
     return sight.isEmpty ? 
       Column(
         mainAxisAlignment: MainAxisAlignment.center , 
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(icon, size: 64, color: emptyColor),
+          Icon(icon, size: 64, color: AppTheme.color3),
           const SizedBox(height: 32),
-          Text('Пусто', textAlign: TextAlign.center, style: emptyStyle.copyWith(fontSize: 18, height: 1.14)),
+          Text(
+            'Пусто', 
+            textAlign: TextAlign.center, 
+            style: Theme.of(context).textTheme.headline2?.copyWith(color: AppTheme.color3)
+          ),
           const SizedBox(height: 8),
-          Text(emptyTitle, textAlign: TextAlign.center, style: emptyStyle.copyWith(fontSize: 14, height: 1.1)),
+          Text(
+            emptyTitle, 
+            textAlign: TextAlign.center, 
+            style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppTheme.color3)
+          ),
         ],
       ) :
       Column(

@@ -9,8 +9,9 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: 2,
-      selectedItemColor: const Color(0xFF252849),
-      unselectedItemColor: const Color(0xFF252849),
+      
+      //selectedItemColor: const Color(0xFF252849),
+      //unselectedItemColor: const Color(0xFF252849),
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.list_alt_sharp),
