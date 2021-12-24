@@ -21,8 +21,8 @@ class App extends StatelessWidget {
 
     final Widget screen;
 
-    const screenId = 3,
-          isDark = true;
+    const screenId = 1,
+          isDark = false;
 
     if (screenId == 0) {
       screen = SightListScreen(mocks);

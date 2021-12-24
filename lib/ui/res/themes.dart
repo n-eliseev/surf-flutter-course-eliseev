@@ -117,8 +117,8 @@ class AppThemeColor {
 
 /// Расширение для указания возвожных оступов
 extension AppThemeSpacing on ThemeData {
-  double get p16 => 16;
   double get p12 => 12;
+  double get p16 => 16;
   double get p24 => 24;
   double get p32 => 32;
 }
@@ -127,14 +127,17 @@ extension AppThemeSpacing on ThemeData {
 /// Расширение для указания возвожных радиусов
 extension AppThemeRadius on ThemeData {
 
+  double get r10 => 10;
   double get r12 => 12;
   double get r16 => 16;
   double get r40 => 40;
 
+  Radius get r10c => Radius.circular(r10);
   Radius get r12c => Radius.circular(r12);
   Radius get r16c => Radius.circular(r16);
   Radius get r40c => Radius.circular(r40);
 
+  BorderRadius get r10brc => BorderRadius.circular(r10);
   BorderRadius get r12brc => BorderRadius.circular(r12);
   BorderRadius get r16brc => BorderRadius.circular(r16);
   BorderRadius get r40brc => BorderRadius.circular(r40);
@@ -265,7 +268,7 @@ class AppTheme {
           colorSet = theme.colorScheme.appColorSet;
 
     return theme.copyWith(
-      
+
       scaffoldBackgroundColor: colorSet.white,
 
       canvasColor: colorSet.white,

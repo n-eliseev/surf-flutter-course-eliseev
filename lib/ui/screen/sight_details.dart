@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/res/themes.dart';
 import 'package:places/ui/res/app_strings.dart';
+import 'package:places/ui/widget/svg_button.dart';
 import 'package:places/ui/widget/svg_text_button.dart';
 import 'package:places/ui/widget/colored_button.dart';
 
@@ -59,7 +60,9 @@ class SightDetails extends StatelessWidget {
               Positioned(
                 left: theme.p32,
                 top: theme.p32,
-                child: Container(color: Colors.white, width: 32, height: 32)
+                width:32,
+                height: 32,
+                child: SvgButton('arrow', onPressed: () => print('Back klicked'),) // Container(color: Colors.white, width: 32, height: 32)
               )
             ],
           ),

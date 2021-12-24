@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:places/ui/screen/res/images.dart';
+import 'package:places/ui/res/images.dart';
 
 /// Виджет навигационного меню
 class BottomNavBar extends StatelessWidget {

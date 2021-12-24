@@ -24,7 +24,8 @@ class AppImage {
     'Heart','Heart-full',
     'Settings', 'Settings-full',
     'Calendar', 'Calendar-full',
-    'Go'
+    'Go',
+    'Arrow'
   ];
 
   static String getAssetName(String id) {
