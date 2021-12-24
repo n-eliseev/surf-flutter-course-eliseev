@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/ui/screen/sight_card.dart';
-import 'package:places/ui/screen/res/themes.dart';
-import 'package:places/domain/app_strings.dart';
-import 'package:places/domain/app_ui.dart';
+import 'package:places/ui/res/themes.dart';
+import 'package:places/ui/res/app_strings.dart';
 
 
 /// Класс описывает виджет 
@@ -25,6 +24,8 @@ class _SightListScreenState extends State<SightListScreen> {
   @override
   Widget build(BuildContext context) {
 
+    final theme = Theme.of(context);
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
@@ -32,7 +33,7 @@ class _SightListScreenState extends State<SightListScreen> {
         title: Text(
           AppStrings.appBarTitle,
           style: AppTheme.headerText.copyWith(
-            color: Theme.of(context).textTheme.headline1!.color
+            color: theme.textTheme.headline1!.color
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -42,7 +43,7 @@ class _SightListScreenState extends State<SightListScreen> {
         children: [
           for(int i=0; i<widget.sight.length; i++)
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
+              padding: EdgeInsets.fromLTRB(theme.p16, theme.p16, theme.p16, 0),
               child: SightCard(widget.sight[i])
             )
         ]

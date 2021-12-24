@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/domain/app_ui.dart';
+import 'package:places/ui/res/themes.dart';
+import 'package:places/ui/res/app_strings.dart';
+import 'package:places/ui/widget/svg_text_button.dart';
+import 'package:places/ui/widget/colored_button.dart';
 
 
 /// Класс описывает виджет экрана
@@ -15,10 +18,9 @@ class SightDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final width = MediaQuery.of(context).size.width;
-    const double _p16 = AppUi.p16;
-    const double _p24 = AppUi.p24;
-    const blockPadding = EdgeInsets.fromLTRB(_p16, _p24, _p16, 0);
+    final width = MediaQuery.of(context).size.width,
+          theme = Theme.of(context),
+          blockPadding = EdgeInsets.fromLTRB(theme.p16, theme.p24, theme.p16, 0);
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -55,8 +57,8 @@ class SightDetails extends StatelessWidget {
               ),
               
               Positioned(
-                left: _p16,
-                top: _p16*2,
+                left: theme.p32,
+                top: theme.p32,
                 child: Container(color: Colors.white, width: 32, height: 32)
               )
             ],
@@ -64,47 +66,59 @@ class SightDetails extends StatelessWidget {
 
           Padding(
             padding: blockPadding,
-            child: RichText(
-              textAlign: TextAlign.left,
-              text: TextSpan(
-                children: [
-                  TextSpan(text: sight.name, style: Theme.of(context).textTheme.headline1),
-                  const TextSpan(text: '\n'),
-                  TextSpan(text: sight.type, style: Theme.of(context).textTheme.bodyText1),
-                ]
-              )
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(sight.name, style: theme.textTheme.headline1),
+                Text(sight.type, style: theme.textTheme.bodyText1),
+              ],
             ),
           ),
 
           Padding(
             padding: blockPadding,
-            child: Text(sight.details, style: Theme.of(context).textTheme.bodyText1),
+            child: Text(sight.details, style: theme.textTheme.bodyText1),
           ),
 
           Padding(
-            padding: blockPadding,
-            child: Container(
-              height: 48, 
-              width: width,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(AppUi.p12)),
-                color: Colors.green
-              ),
-            ),
-          ),
-
-          const Padding(
-            padding: blockPadding,
-            child: Divider(thickness: 0.8, color: Color.fromRGBO(124, 126, 146, 0.56))
+            padding: blockPadding.copyWith(bottom: 0),
+            child: ColoredButton(
+              AppStrings.createPath,
+              icon: 'go',
+              onPressed: () => print('Go clicked'),
+            )
           ),
 
           Padding(
-            padding: blockPadding,
+            padding: blockPadding.copyWith(bottom: 9),
+            child: const Divider(),
+          ),
+
+          Padding(
+            padding: blockPadding.copyWith(top:0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(color: Colors.grey, width: width / 2 - _p16*2, height: 40),
-                Container(color: Colors.blue, width: width / 2 - _p16*2, height: 40)
+
+                const Expanded(
+                  flex: 5, 
+                  child: SvgTextButton(
+                    icon: 'calendar', 
+                    label: AppStrings.schedule,
+                    onPressed: null
+                  )
+                ),
+
+                Expanded(
+                  flex: 5,
+                  child: SvgTextButton(
+                    icon: 'heart', 
+                    label: AppStrings.toFavorite,
+                    onPressed: () => print('Heart pressed')
+                  )
+                ),
+
               ]
             ),
           )

@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:places/mocks.dart';
 import 'package:places/ui/screen/sight_list_screen.dart';
 import 'package:places/ui/screen/sight_details.dart';
-import 'package:places/domain/app_strings.dart';
+import 'package:places/ui/res/app_strings.dart';
 import 'package:places/ui/screen/visiting_screen.dart';
-import 'package:places/ui/screen/res/themes.dart';
+import 'package:places/ui/res/themes.dart';
+
 
 void main() {
   runApp(const App());
 }
+
 
 class App extends StatelessWidget {
 
@@ -17,14 +19,25 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //final screen = SightListScreen(mocks);
-    //final screen = SightDetails(mocks[1]);
-    final screen = VisitingScreen();
+    final Widget screen;
+
+    const screenId = 3,
+          isDark = true;
+
+    if (screenId == 0) {
+      screen = SightListScreen(mocks);
+    } 
+    else if(screenId == 1) {
+      screen = SightDetails(mocks[1]);
+    }
+    else {
+      screen = const VisitingScreen();
+    }
 
     return MaterialApp(
-      title: AppStrings.appTitle, //'Places',
+      title: AppStrings.appTitle,
       home: screen,
-      theme: AppTheme.dark//AppTheme.light,
+      theme: isDark ? AppTheme.dark : AppTheme.light
     );
   }
 }

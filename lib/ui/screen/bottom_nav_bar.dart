@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:places/ui/screen/res/images.dart';
 
 /// Виджет навигационного меню
 class BottomNavBar extends StatelessWidget {
@@ -9,24 +10,26 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: 2,
-      
-      //selectedItemColor: const Color(0xFF252849),
-      //unselectedItemColor: const Color(0xFF252849),
-      items: const <BottomNavigationBarItem>[
+
+      items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.list_alt_sharp),
+          icon: AppImage.getSvg('list'),
+          activeIcon: AppImage.getSvg('list-full'),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.map),
+          icon: AppImage.getSvg('map'),
+          activeIcon: AppImage.getSvg('map-full'),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.favorite),
+          icon: AppImage.getSvg('heart'),
+          activeIcon: AppImage.getSvg('heart-full'),
           label: '',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.settings),
+          icon: AppImage.getSvg('settings'),
+          activeIcon: AppImage.getSvg('settings-full'),
           label: '',
         ),
       ],

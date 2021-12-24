@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:places/domain/sight.dart';
-import 'package:places/domain/app_ui.dart';
+import 'package:places/ui/res/themes.dart';
+import 'package:places/ui/res/images.dart';
 
 
 /// Класс описывает виджет карточку (превью) интересного места
@@ -15,8 +15,9 @@ class SightCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final theme = Theme.of(context);
+
     return Card(
-      //child: ,
       
       child: Column(
         children: [
@@ -28,9 +29,9 @@ class SightCard extends StatelessWidget {
                 width: double.infinity,
                 height: 96,
                 child: ClipRRect(
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(AppUi.p16),
-                    topRight: Radius.circular(AppUi.p16)
+                  borderRadius: BorderRadius.only(
+                    topLeft: theme.r16c,
+                    topRight: theme.r16c
                   ),
 
                   child: Image.network(
@@ -55,18 +56,24 @@ class SightCard extends StatelessWidget {
               ),
 
               Positioned(
-                top: AppUi.p16,
-                left: AppUi.p16,
+                top: theme.p16,
+                left: theme.p16,
                 child: Text(
                   sight.type.toLowerCase(), 
-                  style: Theme.of(context).textTheme.bodyText1?.copyWith(color: Colors.white)
+                  style: theme.textTheme.bodyText1?.copyWith(color: Colors.white)
                 )
               ),
 
               Positioned(
-                top: AppUi.p16,
-                right: AppUi.p16,
-                child: Container(color: Colors.white, width: 20, height: 18)
+                top: theme.p16,
+                right: theme.p16,
+                child: IconButton(
+                  icon: AppImage.getSvg('heart'),
+                  onPressed: () => print('Like pressed'),
+                  iconSize: 20,
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(minWidth: 20, minHeight: 20),
+                )
               ),
             ]
           ),
@@ -75,19 +82,13 @@ class SightCard extends StatelessWidget {
             width: double.infinity,
             height: 92,
             child: Padding(
-              padding: const EdgeInsets.all(AppUi.p16),
+              padding: EdgeInsets.all(theme.p16),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    sight.name,
-                    style: Theme.of(context).textTheme.headline3
-                  ),
-                  Text(
-                    sight.details,
-                    style: Theme.of(context).textTheme.bodyText2
-                  ),
+                  Text(sight.name, style: theme.textTheme.headline3),
+                  Text(sight.details, style: theme.textTheme.bodyText2),
                 ],
               )
             )

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:places/domain/sight.dart';
 import 'package:places/mocks.dart';
-import 'package:places/domain/app_ui.dart';
-import 'package:places/domain/app_strings.dart';
+import 'package:places/ui/res/app_strings.dart';
 import 'package:places/ui/screen/sight_card.dart';
 import 'package:places/ui/screen/bottom_nav_bar.dart';
-import 'package:places/ui/screen/res/themes.dart';
+import 'package:places/ui/res/themes.dart';
+
 
 // Класс описывает виджет экрана с местами, которые пользователь 
 // желает посетить и уже посетил
@@ -15,6 +15,9 @@ class VisitingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    final theme = Theme.of(context);
+
     return DefaultTabController(
       
       length: 2,
@@ -30,7 +33,7 @@ class VisitingScreen extends StatelessWidget {
             child: Text(
               AppStrings.favorite,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headline2,
+              style: theme.textTheme.headline2
             )
           ),
           
@@ -38,8 +41,8 @@ class VisitingScreen extends StatelessWidget {
             preferredSize: const Size.fromHeight(52),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(40),
-                color: Theme.of(context).cardTheme.color,
+                borderRadius: theme.r40brc,
+                color: theme.cardTheme.color
               ),
               margin: const EdgeInsets.symmetric(
                 vertical: 6,
@@ -47,8 +50,8 @@ class VisitingScreen extends StatelessWidget {
               ),
               child: const TabBar(
                 tabs: [
-                  Tab( text: 'Хочу посетить'),
-                  Tab( text: 'Посетил' ),
+                  Tab( text: AppStrings.wantToVisit),
+                  Tab( text: AppStrings.visited ),
                 ],
               ),
             ),
@@ -58,8 +61,8 @@ class VisitingScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             //_SightListTab(sight: mocks.sublist(2), icon: Icons.my_location, emptyTitle: 'Отмечайте понравившиеся\nместа и они появиятся здесь.',),            
-            const _SightListTab(icon: Icons.my_location, emptyTitle: 'Отмечайте понравившиеся\nместа и они появиятся здесь.',),            
-            _SightListTab(sight: mocks.sublist(0,1),icon: Icons.checklist, emptyTitle: 'Завершите маршрут,\nчтобы место попало сюда.'),            
+            const _SightListTab(icon: Icons.my_location, emptyTitle: AppStrings.markedPlace,),            
+            _SightListTab(sight: mocks.sublist(0,1),icon: Icons.checklist, emptyTitle: AppStrings.donePath),            
           ]
         ),
 
@@ -92,23 +95,26 @@ class _SightListTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final theme = Theme.of(context),
+          ibColor = theme.colorScheme.appColorSet.inactiveBlack;
+
     return sight.isEmpty ? 
       Column(
         mainAxisAlignment: MainAxisAlignment.center , 
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Icon(icon, size: 64, color: AppTheme.color3),
+          Icon(icon, size: 64, color: ibColor),
           const SizedBox(height: 32),
           Text(
-            'Пусто', 
+            AppStrings.empty, 
             textAlign: TextAlign.center, 
-            style: Theme.of(context).textTheme.headline2?.copyWith(color: AppTheme.color3)
+            style: theme.textTheme.headline2?.copyWith(color: ibColor)
           ),
           const SizedBox(height: 8),
           Text(
             emptyTitle, 
             textAlign: TextAlign.center, 
-            style: Theme.of(context).textTheme.bodyText1?.copyWith(color: AppTheme.color3)
+            style: theme.textTheme.bodyText1?.copyWith(color: ibColor)
           ),
         ],
       ) :
@@ -118,7 +124,7 @@ class _SightListTab extends StatelessWidget {
         children: [
           for(int i=0; i<sight.length; i++)
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppUi.p16, AppUi.p16, AppUi.p16, 0),
+              padding: EdgeInsets.fromLTRB(theme.p16, theme.p16, theme.p16, 0),
               child: SightCard(sight[i])
             )
         ]
